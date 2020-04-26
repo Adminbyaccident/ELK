@@ -14,8 +14,7 @@ yum update -y
 # Let's upgrade the already installed packages on this box.
 yum upgrade -y
 
-# Allow HTTP through the firewall
-firewall-cmd --permanent --zone=public --add-port=5044/tcp
+# Allow Kibana through the firewall
 firewall-cmd --permanent --zone=public --add-port=5601/tcp
 firewall-cmd --reload
 
