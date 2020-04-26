@@ -54,6 +54,30 @@ systemctl enable elasticsearch.service
 # Start elasticsearch
 systemctl start elasticsearch.service
 
+# Add a configuration file for the logstash repository
+echo "
+[logstash-7.x]
+name=Elastic repository for 7.x packages
+baseurl=https://artifacts.elastic.co/packages/7.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+" >> /etc/yum.repos.d/logstash.repo
+
+# Install logstash
+yum install -y logstash
+
+# Configure logstash itself
+sed -i 's/#http.host: "127.0.0.1"/http.host:"127.0.0.1"/'  /etc/logstash/logstash.yml
+
+# Enable logstash as a service controlled by systemd
+systemctl enable logstash.service
+
+# Start up logstash
+systemctl start logstash.service
+
 # Add a configuration file for the kibana repository
 echo "
 [kibana-7.x]
@@ -79,30 +103,6 @@ systemctl enable kibana.service
 
 # Start up kibana
 systemctl start kibana.service
-
-# Add a configuration file for the logstash repository
-echo "
-[logstash-7.x]
-name=Elastic repository for 7.x packages
-baseurl=https://artifacts.elastic.co/packages/7.x/yum
-gpgcheck=1
-gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
-enabled=1
-autorefresh=1
-type=rpm-md
-" >> /etc/yum.repos.d/logstash.repo
-
-# Install logstash
-yum install -y logstash
-
-# Configure logstash itself
-sed -i 's/#http.host: "127.0.0.1"/http.host:"127.0.0.1"/'  /etc/logstash/logstash.yml
-
-# Enable logstash as a service controlled by systemd
-systemctl enable logstash.service
-
-# Start up logstash
-systemctl start logstash.service
 
 # Final message 1
 echo "ELK stack installed"
