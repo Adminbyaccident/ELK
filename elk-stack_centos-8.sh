@@ -16,6 +16,9 @@ yum upgrade -y
 
 # Allow Kibana through the firewall
 firewall-cmd --permanent --zone=public --add-port=5601/tcp
+# Allow Logstash to get logs from Beats on the client through port 5044
+firewall-cmd --permanent --zone=public --add-port=5044/tcp
+# Reload the firewall rules
 firewall-cmd --reload
 
 # Enable EPEL repository
