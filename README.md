@@ -1,5 +1,9 @@
 # ELK
-This is a collection of ELK stack install and config scripts
+This is a collection of ELK stack install and config scripts. ELK stands for:
+
+- Elasticsearch (search engine)
+- Logstash (log collector and digestor)
+- Kibana (web front-end)
 
 ## The elk-stack-v7_centos-8.sh script
 This script installs an ELK stack version 7 on a single CenOS 8 server
