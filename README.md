@@ -22,4 +22,4 @@ This script works in conjunction with the above one and allows the ELK stack to 
 - TLS connections from the clients (browser, not the log collection) with self-signed key and certificate
 - HTTP to HTTPS redirection
 - Sets the HSTS header in NGINX so TLS connections can't be downgraded to plain text
-- Sets username and password (at the beginning of the script you'll be asked to set a new password)
+- Sets username and password (at the beginning of the script you'll be asked to set a new password for 'kibadmin' user)
