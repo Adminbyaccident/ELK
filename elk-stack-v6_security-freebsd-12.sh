@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/sh
 
 # This is a script to secure an ELK stack version 6 on FreeBSD 12
 # Use it after the original ELK stack script found in this URL:
