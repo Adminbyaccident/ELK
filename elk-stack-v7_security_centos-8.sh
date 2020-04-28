@@ -15,6 +15,11 @@ echo "This is the only interactive bit on this script"
 echo "Set the password you want for the kbadmin user. You'll be asked twice"
 echo "kibadmin:`openssl passwd -apr1`" | sudo tee -a /etc/nginx/htpasswd.users
 
+# Change firewall ports
+firewall-cmd --permanent --zone=public --remove-port=5601/tcp
+firewall-cmd --permanent --zone=public --add-port=443/tcp
+firewall-cmd --reload
+
 # Update the system
 dnf update -y
 
