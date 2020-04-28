@@ -30,7 +30,7 @@ touch /usr/local/etc/nginx/nginx.conf
 # Generate TLS self-signed key and certificate with OpenSSL
 
 openssl genpkey -algorithm RSA -out /usr/local/etc/nginx/cert.key 
-openssl req -new -x509 -days 365 -key cert.key -out /usr/local/etc/nginx/cert.crt -sha256 -subj "/C=ES/ST=Barcelona/L=Terrassa/O=Adminbyaccident/OU=Operations/CN=adminbyaccident.com"
+openssl req -new -x509 -days 365 -key /usr/local/etc/nginx/cert.key -out /usr/local/etc/nginx/cert.crt -sha256 -subj "/C=ES/ST=Barcelona/L=Terrassa/O=Adminbyaccident/OU=Operations/CN=adminbyaccident.com"
 
 # Configure NGINX (as a reverse proxy)
 echo "
