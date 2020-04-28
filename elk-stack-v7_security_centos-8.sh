@@ -18,6 +18,7 @@ echo "kibadmin:`openssl passwd -apr1`" | sudo tee -a /etc/nginx/htpasswd.users
 # Change firewall ports
 firewall-cmd --permanent --zone=public --remove-port=5601/tcp
 firewall-cmd --permanent --zone=public --add-port=443/tcp
+firewall-cmd --permanent --zone=public --add-port=80/tcp
 firewall-cmd --reload
 
 # Update the system
