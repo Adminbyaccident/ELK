@@ -43,7 +43,6 @@ openssl req -new -x509 -days 365 -key /etc/nginx/cert.key -out /etc/nginx/cert.c
 
 # Configure NGINX (as a reverse proxy)
 echo "
-
 #user  nobody;
 worker_processes  1;
 # This default error log path is compiled-in to make sure configuration parsing
@@ -71,21 +70,24 @@ http {
     keepalive_timeout  65;
     #gzip  on;
 server {
-    listen 80;
+    listen 80 default_server;
+    listen [::]:80 default_server;
     return 301 https://$host$request_uri;
 }
 server {
-    listen 443 ssl;
-    server_name localhost;
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
     auth_basic "Restricted Access";
     auth_basic_user_file /etc/nginx/htpasswd.users;
     
     ssl_certificate           /etc/nginx/cert.crt;
     ssl_certificate_key       /etc/nginx/cert.key;
+    ssl_session_timeout 1d;
     ssl_session_cache  builtin:1000  shared:SSL:10m;
     ssl_protocols   TLSv1.2 TLSv1.3;
-    ssl_ciphers HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;
-    ssl_prefer_server_ciphers on;
+    ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
+    ssl_prefer_server_ciphers off;
+    ssl_session_tickets off;
     
     access_log            /var/log/nginx/elk.log;
     add_header Strict-Transport-Security "max-age=63072000" always;
