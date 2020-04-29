@@ -40,6 +40,7 @@ touch /etc/nginx/nginx.conf
 
 openssl genpkey -algorithm RSA -out /etc/nginx/cert.key 
 openssl req -new -x509 -days 365 -key /etc/nginx/cert.key -out /etc/nginx/cert.crt -sha256 -subj "/C=ES/ST=Barcelona/L=Terrassa/O=Adminbyaccident/OU=Operations/CN=adminbyaccident.com"
+openssl dhparam -out /etc/nginx/dhparam.pem 2048
 
 # Configure NGINX (as a reverse proxy)
 echo "
