@@ -1,12 +1,31 @@
 #!/usr/bin/bash
-
-# This is an install script for an ELK stack on CentOS 8.
-
-# Instructions on how to use this script 
-
+# Instructions on how to use this script:
 # chmod +x SCRIPTNAME.sh
-
 # sudo ./SCRIPTNAME.sh
+#
+# SCRIPT: elk-stack-v7_centos-8.sh
+# AUTHOR: ALBERT VALBUENA
+# DATE: 26-04-2020
+# SET FOR: Production
+# (For Alpha, Beta, Dev, Test and Production)
+#
+# PLATFORM: CentOS 8
+#
+# PURPOSE: This script installs an ELK stack version 7 on CentOS 8
+#
+# REV LIST:
+# DATE: 14-12-2021
+# BY: ALBERT VALBUENA
+# MODIFICATION: 14-12-2021
+#
+#
+# set -n # Uncomment to check your syntax, without execution.
+# # NOTE: Do not forget to put the comment back in or
+# # the shell script will not execute!
+
+##########################################################
+################ BEGINNING OF MAIN #######################
+##########################################################
 
 # Let's update CentOS local repositories on this box.
 yum update -y
