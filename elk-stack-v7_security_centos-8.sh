@@ -1,14 +1,31 @@
 #!/usr/bin/bash
-
-# This is a script to secure an ELK stack version 7 on CentOS 8.
-# Use it after the original ELK stack script found in this URL:
-# https://github.com/Adminbyaccident/ELK/blob/master/elk-stack-v7_centos-8.sh
-
-# Instructions on how to use this script 
-
+# Instructions on how to use this script:
 # chmod +x SCRIPTNAME.sh
-
 # sudo ./SCRIPTNAME.sh
+#
+# SCRIPT: elk-stack-v7_security_centos-8.sh
+# AUTHOR: ALBERT VALBUENA
+# DATE: 28-04-2020
+# SET FOR: Production
+# (For Alpha, Beta, Dev, Test and Production)
+#
+# PLATFORM: CentOS 8
+#
+# PURPOSE: This script gives basic security to an ELK stack version 7 on CentOS 8
+#
+# REV LIST:
+# DATE: 14-12-2021
+# BY: ALBERT VALBUENA
+# MODIFICATION: 14-12-2021
+#
+#
+# set -n # Uncomment to check your syntax, without execution.
+# # NOTE: Do not forget to put the comment back in or
+# # the shell script will not execute!
+
+##########################################################
+################ BEGINNING OF MAIN #######################
+##########################################################
 
 # Add username and password to access Kibana through NGINX
 echo "This is the only interactive bit on this script"
