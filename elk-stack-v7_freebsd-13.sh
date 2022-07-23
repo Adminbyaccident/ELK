@@ -35,7 +35,7 @@ sed -ip 's/quarterly/latest/g' /etc/pkg/FreeBSD.conf
 pkg upgrade -y
 
 # Install Java (Check versions on this matrix: https://www.elastic.co/support/matrix#matrix_jvm)
-pkg install -y openjdk8
+pkg install -y openjdk11
 
 # Mount fdescfs and procfs file systems
 # If the permanent configuration below is not set problems may raise after reboots
